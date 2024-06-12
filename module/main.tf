@@ -1,6 +1,6 @@
 resource "aws_security_group" "allow_tls" {
   name        = var.name
-  description =  "Description - ${var.name}-${var.env}"
+  description =  "Description - ${var.name}"
 
   ingress {
     from_port        = 22
