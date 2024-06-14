@@ -1,0 +1,6 @@
+labels:
+  - tag_Name
+  - tag_env
+  - tag_component
+  - instance_type
+  - instance_id
