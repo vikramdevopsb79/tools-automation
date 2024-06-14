@@ -9,7 +9,7 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-          # - alertmanager:9093
+        # - alertmanager:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -23,6 +23,3 @@ scrape_configs:
     ec2_sd_configs:
         - region: us-east-1
           port: 9100
-    filters:
-      - name: "tag:Monitor"
-        values: [ "yes" ]
