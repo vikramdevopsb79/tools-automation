@@ -29,7 +29,7 @@ resource "aws_security_group" "allow_tls" {
 resource "aws_instance" "node" {
   ami           = data.aws_ami.ami.id
   instance_type = var.instance_type
-  vpc_security_group_ids = [data.aws_security_group.allow-all.id]
+  vpc_security_group_ids = [aws_security_group.allow_tls.id]
   instance_market_options {
     market_type = "spot"
     spot_options {

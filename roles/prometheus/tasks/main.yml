@@ -10,6 +10,12 @@
     remote_src: true
     owner: prometheus
     group: prometheus
+- name: Update Prometheus configuration
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /opt/prometheus-2.52.0.linux-amd64/prometheus.yml
+    owner: prometheus
+    group: prometheus
 - name: Copy Prometheus systemd file
   ansible.builtin.template:
     src: prometheus.service
