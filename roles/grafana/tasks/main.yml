@@ -24,3 +24,17 @@
 #     url: http://localhost:3000
 #     url_username: admin
 #     url_password: admin123
+- name: Copy test.json file
+  ansible.builtin.file:
+    src: test.json
+    dest: /tmp/test.json
+
+- name: Create dashboard
+  community.grafana.grafana_dashboard:
+    url: http://localhost:3000
+    url_username: admin
+    url_password: admin123
+    state: present
+    commit_message: Updated by ansible
+    overwrite: true
+    path: /tmp/test.json
