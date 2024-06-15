@@ -14,3 +14,13 @@
     name: grafana-server
     state: started
     enabled: yes
+# We created the Data source from UI, Since the new version of grafana is giving a error.
+# - name: create prometheus datasource
+#   community.grafana.grafana_datasource:
+#     name: prometheus
+#     ds_type: prometheus
+#     ds_url: http://prometheus-internal.rdevopsb79.online:9090
+#     access: direct
+#     url: http://localhost:3000
+#     url_username: admin
+#     url_password: admin123
