@@ -1,0 +1,11 @@
+- name: set prompt
+  ansible.builtin.shell: set-prompt grafana
+- name: copy repo file
+  ansible.builtin.template:
+    src: grafana.repo
+    dest: /etc/yum.repos.d/grafana.repo
+
+- name: Install Grafana
+  ansible.builtin.dnf:
+    name: grafana
+    state: installed
