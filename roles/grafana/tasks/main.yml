@@ -9,3 +9,8 @@
   ansible.builtin.dnf:
     name: grafana
     state: installed
+- name: start grafana server
+  ansible.builtin.systemd_service:
+    name: grafana-server
+    state: started
+    enabled: yes
