@@ -37,7 +37,7 @@ scrape_configs:
             port: 9113
             filters:
               - name: "tag:component"
-                values: [ "Frontend" ]
+                values: ["Frontend"]
       relabel_configs:
 {% for label in labels %}
     - source_labels: [__meta_ec2_{{label}}]
