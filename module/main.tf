@@ -31,7 +31,7 @@ resource "aws_security_group_rule" "app-ports" {
   security_group_id = aws_security_group.allow_tls.id
   to_port           = element(var.port_no, count.index)
   type              = "ingress"
-  cidr_blocks       = ["0.0.0/0"]
+  cidr_blocks       = ["0.0.0.0/0"]
 }
 resource "aws_instance" "node" {
   ami           = data.aws_ami.ami.id
