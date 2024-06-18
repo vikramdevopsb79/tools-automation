@@ -43,14 +43,14 @@ scrape_configs:
     - source_labels: [__meta_ec2_{{label}}]
       target_label: {{label}}
 {%endfor%}
-    - job_name: 'grok exporter nodes'
-      ec2_sd_configs:
+  - job_name: 'grok exporter nodes'
+    ec2_sd_configs:
         - region: us-east-1
           port: 9144
           filters:
             - name: "tag:component"
               values: ["Frontend"]
-      relabel_configs:
+    relabel_configs:
 {%for label in labels%}
     - source_labels: [__meta_ec2_{{label}}]
       target_label: {{label}}
