@@ -1,0 +1,10 @@
+groups:
+  - name: example
+    rules:
+      - alert: up
+        expr: up < 1
+        for: 1m
+        labels:
+          severity: CRITICAL
+        annotations:
+          summary: Node Down Alert
