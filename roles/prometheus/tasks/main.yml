@@ -11,20 +11,20 @@
     owner: prometheus
     group: prometheus
 
-#- name: Update Prometheus configuration
-#  ansible.builtin.template:
-#    src: prometheus.yml
-#    dest: /opt/prometheus-2.52.0.linux-amd64/prometheus.yml
-#    owner: prometheus
-#    group: prometheus
-#- name: Copy Prometheus systemd file
-#  ansible.builtin.template:
-#    src: prometheus.service
-#    dest: /etc/systemd/system/prometheus.service
-#
-#- name: Start Prometheus service
-#  ansible.builtin.systemd_service:
-#    name: prometheus
-#    state: restarted
-#    enabled: yes
-#    daemon-reload: yes
+- name: Update Prometheus configuration
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/alertmanager-0.27.0.darwin-amd64/alertmanager.yml
+    owner: prometheus
+    group: prometheus
+- name: Copy Prometheus systemd file
+  ansible.builtin.template:
+    src: prometheus.service
+    dest: /etc/systemd/system/alertmanager.service
+
+- name: Start alertmanager service
+  ansible.builtin.systemd_service:
+    name: alertmanager
+    state: restarted
+    enabled: yes
+    daemon-reload: yes

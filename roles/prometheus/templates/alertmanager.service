@@ -1,0 +1,11 @@
+[Unit]
+Description = alertmanager Service
+
+[Service]
+User=prometheus
+WorkingDirectory=/opt/alertmanager-0.27.0.darwin-amd64
+ExecStart=/opt/alertmanager-0.27.0.darwin-amd64 /alertmanager
+SyslogIdentifier=prometheus
+
+[Install]
+WantedBy=multi-user.target

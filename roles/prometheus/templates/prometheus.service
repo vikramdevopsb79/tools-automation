@@ -1,5 +1,5 @@
 [Unit]
-Description = Backend Service
+Description = Protmetheus Service
 
 [Service]
 User=prometheus
