@@ -2,7 +2,6 @@
 Description = Protmetheus Service
 
 [Service]
-Type=forking
 User=prometheus
 WorkingDirectory=/opt/prometheus-2.52.0.linux-amd64
 ExecStart=/opt/prometheus-2.52.0.linux-amd64/prometheus
