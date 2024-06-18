@@ -9,7 +9,7 @@ receivers:
     email_configs:
       - to: "saivikram2020@gmail.com"      # you@example.com
         from: "saivikram2020@gmail.com"  # alertmanager@example.com
-        smarthost: "email-smtp.us-east-1.amazonaws.com"
+        smarthost: "email-smtp.us-east-1.amazonaws.com:587"
         auth_username: "{{secrets.smtp_username}}"
         auth_password: "{{secrets.smtp_password}}"
         require_tls: true

@@ -1,0 +1,17 @@
+- name: Start {{ service_name }} service
+  ansible.builtin.systemd_service:
+    name: "{{ service_name }}"
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
+
+- name: Get Service Statuses
+  ansible.builtin.service_facts:
+  register: service_status
+
+- name: Service Failed
+  ansible.builtin.fail:
+    msg: Service "{{ service_name }}" in Failed State
+  when: state == "failed"
+  vars:
+    state: "{{ service_status.ansible_facts.services[service_name + '.service'].status }}"

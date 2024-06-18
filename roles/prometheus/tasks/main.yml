@@ -26,6 +26,12 @@
     state: restarted
     enabled: yes
     daemon-reload: yes
+- name: Start Prometheus Service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: start-service
+  vars:
+    service_name: prometheus
 - name: Download Alert Manager
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
