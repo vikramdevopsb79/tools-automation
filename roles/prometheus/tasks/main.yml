@@ -19,7 +19,7 @@
     group: prometheus
 - name: Copy Prometheus systemd file
   ansible.builtin.template:
-    src: prometheus.service
+    src: alertmanager.service
     dest: /etc/systemd/system/alertmanager.service
 
 - name: Start alertmanager service
