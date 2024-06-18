@@ -5,9 +5,14 @@ route:
   repeat_interval: 1h
   receiver: 'web.hook'
 receivers:
-  - name: 'web.hook'
-    webhook_configs:
-      - url: 'http://127.0.0.1:5001/'
+  - name: "email"
+    email_configs:
+      - to: "saivikram2020@gmail.com"      # you@example.com
+        from: "saivikram2020@gmail.com"  # alertmanager@example.com
+        smarthost: "email-smtp.us-east-1.amazonaws.com"
+        auth_username: "{{secrets.smtp_username}}"
+        auth_password: "{{secrets.smtp_password}}"
+        require_tls: true
 inhibit_rules:
   - source_match:
       severity: 'critical'
