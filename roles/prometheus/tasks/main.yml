@@ -45,7 +45,12 @@
     remote_src: true
     owner: prometheus
     group: prometheus
-
+- name: Install Python hvac
+  ansible.builtin.pip:
+    name:
+      - hvac
+      - cryptography
+    executable: pip3.11
 - name: Update Alert Manager configuration
   ansible.builtin.template:
     src: alertmanager.yml
