@@ -15,6 +15,12 @@
     dest: /opt/prometheus-2.52.0.linux-amd64/prometheus.yml
     owner: prometheus
     group: prometheus
+- name: Update Alerts
+  ansible.builtin.template:
+    src: alert_rules.yml
+    dest: /opt/prometheus-2.52.0.linux-amd64/alert_rules.yml
+    owner: prometheus
+    group: prometheus
 - name: Copy Prometheus systemd file
   ansible.builtin.template:
     src: prometheus.service
