@@ -1,11 +1,9 @@
 - name: Set Prompt
   ansible.builtin.shell: set-prompt elk
-
 - name: Copy Repo file
   ansible.builtin.template:
     src: elastic.repo
     dest: /etc/yum.repos.d/elastic.repo
-
 - name: Install Tools
   ansible.builtin.dnf:
     name:
@@ -14,15 +12,13 @@
       - logstash
       - nginx
     state: installed
-
-- name: Copy Config files
-  ansible.builtin.template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  loop:
-    - { src: nginx.conf, dest: /etc/nginx/nginx.conf }
-    - { src: logstash.conf, dest: /etc/logstash/conf.d/logstash.conf }
-
+#- name: Copy Config files
+#  ansible.builtin.template:
+#    src: "{{ item.src }}"
+#    dest: "{{ item.dest }}"
+#  loop:
+#    - { src: nginx.conf, dest: /etc/nginx/nginx.conf }
+#    - { src: logstash.conf, dest: /etc/logstash/conf.d/logstash.conf }
 - name: Start Services
   ansible.builtin.systemd_service:
     name: "{{ item }}"
