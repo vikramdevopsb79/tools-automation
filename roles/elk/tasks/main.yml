@@ -45,3 +45,4 @@
 
 # Reset admin password
 # /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+#elk password needed
