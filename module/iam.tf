@@ -14,6 +14,7 @@ resource "aws_iam_role" "main" {
       },
     ]
   })
+  # A role is created for tool to communicate with AWS
 
   inline_policy {
     name = "inline-policy"
@@ -35,7 +36,9 @@ resource "aws_iam_role" "main" {
   }
 }
 
+# Policies are attached to the role to access the resources
 
+#to create instance ARN for ec2 we added this for that role
 resource "aws_iam_instance_profile" "main" {
   name = "${var.name}-role"
   role = aws_iam_role.main.name

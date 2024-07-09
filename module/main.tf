@@ -27,7 +27,8 @@ resource "aws_security_group" "allow_tls" {
     ipv6_cidr_blocks = ["::/0"]
   }
 }
-# RE run it will fail because while creating security group resources it check for ingress other ports it will skip
+# RE run it will fail because while creating security group resources it check for ingress other ports it will skip so dynamic block used to inherit the security group
+
 # resource "aws_security_group_rule" "app-ports" {
 #   count             = length(var.port_no)
 #   from_port         = element(var.port_no, count.index)
@@ -41,13 +42,14 @@ resource "aws_instance" "node" {
   ami           = data.aws_ami.ami.id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-  #attaching policy  i am role to ec2
+  #attaching   i am role to the tool instance
   iam_instance_profile   = aws_iam_instance_profile.main.name
   instance_market_options {
     market_type = "spot"
     spot_options {
       instance_interruption_behavior  = "stop"
       spot_instance_type              = "persistent"
+      # interruption behaviour they can stop , spot_instance_type we can stop
     }
   }
   tags = {

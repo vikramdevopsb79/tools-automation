@@ -24,6 +24,9 @@
 #     url: http://localhost:3000
 #     url_username: admin
 #     url_password: admin123
+
+# Show metric information data in dashboard even though dashboard is gone by using below steps
+
 - name: Copy test.json file
   ansible.builtin.copy:
     src: test.json

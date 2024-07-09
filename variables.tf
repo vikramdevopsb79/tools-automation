@@ -32,3 +32,6 @@ variable "tools" {
   }
   }
 }
+
+#policy actions are added to the role to provide the resources access for ec2 instances this added because service discovery need to communicate with AWS
+# 9093 for alert manager , 9094 for nginx exporter
