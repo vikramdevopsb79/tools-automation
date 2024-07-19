@@ -32,7 +32,7 @@
 # gh auth refresh -h github.com -s admin:org
 - name: Get token
   ansible.builtin.shell: |
-    gh api --method POST -H "Accept: application/vnd.github+json" /orgs/raghudevopsb79/actions/runners/registration-token | jq .token | xargs
+    gh api --method POST -H "Accept: application/vnd.github+json" /orgs/vikramdevopsorg/actions/runners/registration-token | jq .token | xargs
   register: token
 
 - name: Remove Runner
@@ -43,7 +43,7 @@
   ignore_errors: yes
 
 - name: Configure Runner
-  ansible.builtin.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{token.stdout}} --unattended --replace
+  ansible.builtin.shell: /actions-runner/config.sh --url https://github.com/vikramdevopsorg --token {{token.stdout}} --unattended --replace
   become_user: ec2-user
   args:
     chdir: /actions-runner
