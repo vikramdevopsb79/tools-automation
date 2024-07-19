@@ -1,0 +1,32 @@
+- name: Set Prompt
+  ansible.builtin.shell: set-prompt ci-server
+
+- name: Create actions directory
+  ansible.builtin.file:
+    path: /actions-runner
+    state: directory
+    owner: ec2-user
+    group: ec2-user
+
+- name: Download runner software
+  ansible.builtin.unarchive:
+    src: https://github.com/actions/runner/releases/download/v2.317.0/actions-runner-linux-x64-2.317.0.tar.gz
+    dest: /actions-runner
+    owner: ec2-user
+    group: ec2-user
+    remote_src: true
+
+- name: Install libicu
+  ansible.builtin.dnf:
+    name: libicu
+    state: installed
+
+- name: Install gh cli
+  ansible.builtin.shell: |
+    dnf install 'dnf-command(config-manager)' -y
+    dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+    dnf install gh --repo gh-cli -y
+
+# This token will run if we auth manually , Following are two commands we need to run.
+# gh auth login
+# gh auth refresh -h github.com -s admin:org
