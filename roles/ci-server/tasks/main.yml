@@ -16,16 +16,18 @@
     group: ec2-user
     remote_src: true
 
-- name: Install libicu
-  ansible.builtin.dnf:
-    name: libicu
-    state: installed
-
-- name: Install gh cli
-  ansible.builtin.shell: |
-    dnf install 'dnf-command(config-manager)' -y
-    dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-    dnf install gh --repo gh-cli -y
+#- name: Install libicu
+#  ansible.builtin.dnf:
+#    name: libicu
+#    state: installed
+#
+#- name: Install gh cli
+#  ansible.builtin.shell: |
+#    dnf install 'dnf-command(config-manager)' -y
+#    dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+#    dnf install gh --repo gh-cli -y
+- name: Configure Runner
+  ansible.group.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{secrets.runner_token}}
 
 # This token will run if we auth manually , Following are two commands we need to run.
 # gh auth login
