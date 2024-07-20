@@ -34,7 +34,10 @@ variable "tools" {
     name          = "ci-server"
     instance_type = "t3.small"
     port_no = {}
-    policy_actions = []
+    policy_actions = [
+      "ecr:*",
+      "eks:DescribeCluster"
+    ]
     }
     sonarqube = {
       name = "sonarqube"
@@ -42,9 +45,7 @@ variable "tools" {
       port_no = {
         sonarqube = "9000"
       }
-      policy_actions = [
-
-      ]
+      policy_actions = []
     }
   }
 }

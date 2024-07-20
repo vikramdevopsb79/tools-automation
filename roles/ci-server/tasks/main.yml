@@ -72,3 +72,19 @@
     dest: /sonar-scanner
     owner: ec2-user
     group: ec2-user
+- name: Install Argocd cli
+  ansible.builtin.shell: |
+    curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+    install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+    rm -f argocd-linux-amd64
+
+- name: Install kubectl
+  ansible.builtin.shell: |
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    install -m 555 kubectl /usr/local/bin/kubectl
+    rm -f kubectl
+
+- name: Install Docker
+  ansible.builtin.dnf:
+    name: docker
+    state: installed
