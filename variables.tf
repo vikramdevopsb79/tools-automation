@@ -36,6 +36,16 @@ variable "tools" {
     port_no = {}
     policy_actions = []
     }
+    sonarqube = {
+      name = "sonarqube"
+      instance_type = "r7a.large"
+      port_no = {
+        sonarqube = "9000"
+      }
+      policy_actions = [
+
+      ]
+    }
   }
 }
 
