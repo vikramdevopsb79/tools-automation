@@ -59,14 +59,14 @@ resource "aws_instance" "node" {
 }
 resource "aws_route53_record" "record" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = "${var.name}.vikramdevops.tech"
+  name    = "${var.name}.vikramdevops.store"
   type    = "A"
   ttl     = 3
   records = [aws_instance.node.public_ip]
 }
 resource "aws_route53_record" "private" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = "${var.name}-internal.vikramdevops.tech"
+  name    = "${var.name}-internal.vikramdevops.store"
   type    = "A"
   ttl     = 5
   records = [aws_instance.node.private_ip]

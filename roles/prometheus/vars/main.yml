@@ -4,5 +4,5 @@ labels:
   - tag_component
   - instance_type
   - instance_id
-secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra-secrets/data/prometheus token={{vault_token}} url=https://vault-internal.vikramdevops.tech:8200 validate_certs=false') }}"
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra-secrets/data/prometheus token={{vault_token}} url=https://vault-internal.vikramdevops.store:8200 validate_certs=false') }}"
 # here configuration of labels added for service discovery to view the metrics
