@@ -40,7 +40,14 @@ variable "tools" {
       "inspector2:ListCoverage",
       "inspector2:ListFindings"
     ]
-    volume_size = 30
+    }
+    sonarqube = {
+      name = "sonarqube"
+      instance_type = "r7a.large"
+      port_no = {
+        sonarqube = "9000"
+      }
+      policy_actions = []
     }
   }
 }
