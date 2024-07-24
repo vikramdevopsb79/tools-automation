@@ -36,7 +36,7 @@
   register: token
 - name: debug
   ansible.builtin.debug:
-    msg: "{{token.stdout}}"
+    msg: "{{token}}"
 #
 #- name: Remove Runner
 #  ansible.builtin.shell: sudo ./svc.sh stop  ; sudo ./svc.sh uninstall ; /actions-runner/config.sh remove --token {{token.stdout}}
