@@ -33,10 +33,10 @@
 - name: Get token
   ansible.builtin.shell: |
     gh api --method POST -H "Accept: application/vnd.github+json" /orgs/vikramdevopsorg/actions/runners/registration-token
-  register: token
+  register: github_token
 - name: debug
   ansible.builtin.debug:
-    msg: "{{token}}"
+    msg: "{{github_token}}"
 #
 #- name: Remove Runner
 #  ansible.builtin.shell: sudo ./svc.sh stop  ; sudo ./svc.sh uninstall ; /actions-runner/config.sh remove --token {{token.stdout}}
