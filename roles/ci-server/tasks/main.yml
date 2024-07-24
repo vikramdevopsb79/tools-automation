@@ -32,7 +32,7 @@
 # gh auth refresh -h github.com -s admin:org
 - name: Get token
   ansible.builtin.shell: |
-    gh api --method POST -H "Accept: application/vnd.github+json" /orgs/vikramdevopsorg/actions/runners/registration-token | jq .token | xargs
+    gh api --method POST -H "Accept: application/vnd.github+json" /orgs/vikramdevopsorg/actions/runners/registration-token
   register: token
 - name: debug
   ansible.builtin.debug:
